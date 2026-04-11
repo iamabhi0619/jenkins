@@ -7,17 +7,17 @@ pipeline {
     }
 
     stages {
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         sh 'npm install'
+        //     }
+        // }
 
-        stage('Build Next.js App') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        // stage('Build Next.js App') {
+        //     steps {
+        //         sh 'npm run build'
+        //     }
+        // }
 
         stage('Docker Build') {
             steps {
