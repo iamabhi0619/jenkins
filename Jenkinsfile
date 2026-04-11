@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'docker:24.0.5'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
     environment {
         IMAGE_NAME = 'nextjs-app'
@@ -7,18 +12,6 @@ pipeline {
     }
 
     stages {
-        // stage('Install Dependencies') {
-        //     steps {
-        //         sh 'npm install'
-        //     }
-        // }
-
-        // stage('Build Next.js App') {
-        //     steps {
-        //         sh 'npm run build'
-        //     }
-        // }
-
         stage('Docker Build') {
             steps {
                 sh 'docker build -t $IMAGE_NAME .'
